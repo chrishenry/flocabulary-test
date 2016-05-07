@@ -1,1 +1,1 @@
-web: gunicorn flocabulary.wsgi --log-file -
+web: gunicorn flocabulary-test.flocabulary.wsgi --log-file -
