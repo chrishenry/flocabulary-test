@@ -1,0 +1,4 @@
+Django==1.9.6
+django-pipeline==1.6.8
+django-pipeline-browserify==0.4.0
+djangorestframework==3.3.3
