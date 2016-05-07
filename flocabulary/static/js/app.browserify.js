@@ -1,10 +1,11 @@
 'use strict';
 
-var $ = require('jquery');
-var React = require('react');
+console.log(React)
+console.log(ReactDOM)
 
 var TestApp = React.createClass({
   render: function() {
+    console.log("herer")
     return (
       <div className="page">
         <h1>Oh shit! React works!</h1>
@@ -13,7 +14,10 @@ var TestApp = React.createClass({
   }
 });
 
-React.render(
+ReactDOM.render(
   React.createElement(TestApp, null),
   document.getElementById('content')
 );
+
+console.log(TestApp)
+console.log(React)
