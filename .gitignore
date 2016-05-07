@@ -64,3 +64,6 @@ target/
 # Javascript
 bower_components
 node_modules
+
+# Data
+db.sqlite3
