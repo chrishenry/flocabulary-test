@@ -146,6 +146,7 @@ STATICFILES_FINDERS = (
 PIPELINE = {
     'PIPELINE_ENABLED': False,
     'BROWSERIFY_ARGUMENTS': '-t [ babelify --presets [ react ] ]',
+    'BROWSERIFY_BINARY': 'browserify',
     'STYLESHEETS': {
         'mysite_css': {
             'source_filenames': (
