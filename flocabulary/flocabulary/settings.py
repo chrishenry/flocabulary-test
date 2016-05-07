@@ -130,10 +130,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = normpath(join(SITE_ROOT, 'static'))
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (
+    join(BASE_DIR, 'static'),
+)
 
 # Django Pipeline (and browserify)
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -141,16 +143,11 @@ STATICFILES_FINDERS = (
     'pipeline.finders.PipelineFinder',
 )
 
-# browserify-specific
-PIPELINE_COMPILERS = (
-    'pipeline_browserify.compiler.BrowserifyCompiler',
-)
-
 if DEBUG:
     PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify'
 
 PIPELINE = {
-    'PIPELINE_ENABLED': True,
+    'PIPELINE_ENABLED': False,
     'STYLESHEETS': {
         'mysite_css': {
             'source_filenames': (
@@ -171,6 +168,11 @@ PIPELINE = {
         }
     }
 }
+
+# browserify-specific
+PIPELINE['COMPILERS'] = (
+    'pipeline_browserify.compiler.BrowserifyCompiler',
+)
 
 PIPELINE['CSS_COMPRESSOR'] = 'pipeline.compressors.NoopCompressor'
 PIPELINE['JS_COMPRESSOR'] = 'pipeline.compressors.NoopCompressor'
