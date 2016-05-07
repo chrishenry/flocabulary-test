@@ -135,7 +135,7 @@ STATICFILES_DIRS = (
 )
 
 # Django Pipeline (and browserify)
-STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -143,11 +143,9 @@ STATICFILES_FINDERS = (
     'pipeline.finders.PipelineFinder',
 )
 
-if DEBUG:
-    PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify'
-
 PIPELINE = {
     'PIPELINE_ENABLED': False,
+    'BROWSERIFY_ARGUMENTS': '-t [ babelify --presets [ react ] ]',
     'STYLESHEETS': {
         'mysite_css': {
             'source_filenames': (
@@ -162,6 +160,7 @@ PIPELINE = {
                 'js/bower_components/jquery/dist/jquery.min.js',
                 'js/bower_components/react/JSXTransformer.js',
                 'js/bower_components/react/react-with-addons.js',
+                'js/bower_components/react/react-dom.js',
                 'js/app.browserify.js',
             ),
             'output_filename': 'js/mysite_js.js',
