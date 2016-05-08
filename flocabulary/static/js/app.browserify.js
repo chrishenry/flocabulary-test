@@ -44,9 +44,9 @@ var ShortenForm = React.createClass({
 
   onSubmit: function(e) {
     e.preventDefault();
-    e.stopPropagation();
     if (validator.isURL(this.state.long_url, { protocols: ['http','https'] })) {
       console.log("Success, save that puppy")
+      this.handleUrlSubmit({long_url: this.state.long_url.trim()});
     } else {
       this.setState({
         long_url_error: "Please submit a valid URL."
@@ -55,7 +55,25 @@ var ShortenForm = React.createClass({
     }
   },
 
+  handleUrlSubmit: function(url) {
+    $.ajax({
+      url: "/v1/urls",
+      dataType: 'json',
+      type: 'POST',
+      data: url,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+        this.setState({long_url_error: "Error: " + err.toString()});
+        this.render()
+      }.bind(this)
+    });
+  },
+
   render: function() {
+    // TODO: these classes and HTML lead to a misaligned error msg. fix.
     var errorClass = classNames({
       'col-md-8': true,
       'col-centered': true,
