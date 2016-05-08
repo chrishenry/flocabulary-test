@@ -41,6 +41,15 @@ input, textarea, select, .uneditable-input {
   margin-top: 130px;
 }
 
+.hidden {
+  display:none;
+}
+
+.alert {
+  clear:both;
+  color: red;
+}
+
 .input-group-addon, .input-group-btn {
   vertical-align: bottom !important;
 }

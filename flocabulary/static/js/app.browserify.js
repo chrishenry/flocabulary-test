@@ -5,7 +5,8 @@ var ShortenForm = React.createClass({
 
   getInitialState: function() {
     return {
-      long_url: this.initialInputValue
+      long_url: this.initialInputValue,
+      long_url_error: false
     };
   },
 
@@ -44,10 +45,24 @@ var ShortenForm = React.createClass({
   onSubmit: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(this.state.long_url)
+    if (validator.isURL(this.state.long_url, { protocols: ['http','https'] })) {
+      console.log("Success, save that puppy")
+    } else {
+      this.setState({
+        long_url_error: "Please submit a valid URL."
+      });
+      this.render()
+    }
   },
 
   render: function() {
+    var errorClass = classNames({
+      'col-md-8': true,
+      'col-centered': true,
+      'alert': true,
+      'alert-error': true,
+      'hidden': !this.state.long_url_error
+    });
     return (
       <form id="long-url-form" onSubmit={this.onSubmit}>
         <div className="input-group col-md-8 col-centered">
@@ -56,6 +71,10 @@ var ShortenForm = React.createClass({
           <span className="input-group-btn">
             <button className="btn btn-primary">Shorten</button>
           </span>
+        </div>
+        <div className={errorClass}>
+          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          {this.state.long_url_error}
         </div>
       </form>
     );
