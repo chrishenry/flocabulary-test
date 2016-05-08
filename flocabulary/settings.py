@@ -17,8 +17,6 @@ from os.path import abspath, basename, dirname, join, normpath
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
-SITE_ROOT = dirname(DJANGO_ROOT)
-SITE_NAME = basename(DJANGO_ROOT)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -65,7 +63,7 @@ ROOT_URLCONF = 'flocabulary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['flocabulary/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,13 +127,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = normpath(join(SITE_ROOT, 'static'))
+STATIC_ROOT = normpath(join(DJANGO_ROOT, 'static'))
 STATICFILES_DIRS = (
-    join(BASE_DIR, 'static'),
+    join(BASE_DIR, 'flocabulary', 'static'),
 )
 
 # Django Pipeline (and browserify)
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -146,6 +144,7 @@ STATICFILES_FINDERS = (
 PIPELINE = {
     'PIPELINE_ENABLED': False,
     'BROWSERIFY_ARGUMENTS': '-t [ babelify --presets [ react ] ]',
+    'BROWSERIFY_BINARY': 'browserify',
     'STYLESHEETS': {
         'mysite_css': {
             'source_filenames': (
