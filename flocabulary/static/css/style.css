@@ -36,3 +36,16 @@ input, textarea, select, .uneditable-input {
   padding-top: 9px;
   font-weight: bold;
 }
+
+#long-url-form {
+  margin-top: 130px;
+}
+
+.input-group-addon, .input-group-btn {
+  vertical-align: bottom !important;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

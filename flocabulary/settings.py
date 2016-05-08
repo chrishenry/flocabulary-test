@@ -149,6 +149,7 @@ PIPELINE = {
         'mysite_css': {
             'source_filenames': (
                 'css/style.css',
+                'js/bower_components/bootstrap/dist/css/bootstrap.min.css'
             ),
             'output_filename': 'css/mysite_css.css',
         },
