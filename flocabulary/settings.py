@@ -60,12 +60,12 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'flocabulary-test.flocabulary.urls'
+ROOT_URLCONF = 'flocabulary.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['flocabulary-test/templates'],
+        'DIRS': ['flocabulary/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
