@@ -149,6 +149,7 @@ PIPELINE = {
         'mysite_css': {
             'source_filenames': (
                 'css/style.css',
+                'js/bower_components/bootstrap/dist/css/bootstrap.min.css'
             ),
             'output_filename': 'css/mysite_css.css',
         },
@@ -160,6 +161,8 @@ PIPELINE = {
                 'js/bower_components/react/JSXTransformer.js',
                 'js/bower_components/react/react-with-addons.js',
                 'js/bower_components/react/react-dom.js',
+                'js/bower_components/validator-js/validator.min.js',
+                'js/bower_components/classnames/index.js',
                 'js/app.browserify.js',
             ),
             'output_filename': 'js/mysite_js.js',
