@@ -75,6 +75,7 @@ var ShortenForm = React.createClass({
   render: function() {
     // TODO: these classes and HTML lead to a misaligned error msg. fix.
     var errorClass = classNames({
+      'input-group': true,
       'col-md-8': true,
       'col-centered': true,
       'alert': true,
@@ -92,6 +93,7 @@ var ShortenForm = React.createClass({
         </div>
         <div className={errorClass}>
           <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          &nbsp;&nbsp;
           {this.state.long_url_error}
         </div>
       </form>
