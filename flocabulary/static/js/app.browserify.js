@@ -59,7 +59,7 @@ var ShortenForm = React.createClass({
     $.ajax({
       url: "/v1/urls",
       dataType: 'json',
-      type: 'POST',
+      type: 'PUT',
       data: url,
       success: function(data) {
         this.setState({data: data});
