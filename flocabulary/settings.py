@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     # DRF
     'rest_framework',
+
+    'flocabulary'
 ]
 
 MIDDLEWARE_CLASSES = [
