@@ -23,6 +23,7 @@ import views
 router = routers.DefaultRouter()
 router.register(r'v1/users', views.UserViewSet)
 router.register(r'v1/groups', views.GroupViewSet)
+router.register(r'v1/links', views.LinkViewSet)
 
 urlpatterns = [
     # Root
